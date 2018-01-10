@@ -15,7 +15,19 @@ namespace Frm
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            //DevExpress.XtraSplashScreen.SplashScreenManager.ShowForm(typeof(SplashScreen1));
+            //System.Threading.Thread.Sleep(5000);
+            Login login = new Login();
+            if (login.ShowDialog()==DialogResult.OK)
+            {
+`                Application.Run(new Form1());
+            }
+            else
+            {
+                
+            }
+            
         }
     }
 }

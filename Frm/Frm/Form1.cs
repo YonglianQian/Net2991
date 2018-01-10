@@ -1,5 +1,4 @@
 ﻿using Frm.Common;
-using HFSoft.Component.Windows;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
