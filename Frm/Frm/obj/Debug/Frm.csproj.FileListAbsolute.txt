@@ -1,0 +1,9 @@
+F:\CSharperReview\Net2991\Frm\bin\Debug\Frm.exe
+F:\CSharperReview\Net2991\Frm\bin\Debug\Frm.pdb
+F:\CSharperReview\Net2991\Frm\obj\Debug\Frm.csprojResolveAssemblyReference.cache
+F:\CSharperReview\Net2991\Frm\obj\Debug\Frm.Form1.resources
+F:\CSharperReview\Net2991\Frm\obj\Debug\Frm.Properties.Resources.resources
+F:\CSharperReview\Net2991\Frm\obj\Debug\Frm.csproj.GenerateResource.Cache
+F:\CSharperReview\Net2991\Frm\obj\Debug\Frm.csproj.CoreCompileInputs.cache
+F:\CSharperReview\Net2991\Frm\obj\Debug\Frm.exe
+F:\CSharperReview\Net2991\Frm\obj\Debug\Frm.pdb
