@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace Frm
 {
-    public partial class Login : Form
+    public partial class Login : DevExpress.XtraEditors.XtraForm
     {
         public Login()
         {
@@ -24,6 +24,7 @@ namespace Frm
             }
             else
             {
+                //this.DialogResult = DialogResult.Cancel;
                 MessageBox.Show("登录失败","错误",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
@@ -37,6 +38,14 @@ namespace Frm
         private void Login_Load(object sender, EventArgs e)
         {
             this.textBox1.Focus();
+        }
+
+        private void Login_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode==Keys.Enter)
+            {
+                this.button2_Click(sender, e);
+            }
         }
     }
 }
