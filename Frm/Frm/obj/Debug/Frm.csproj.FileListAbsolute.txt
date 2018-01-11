@@ -10,7 +10,6 @@ F:\CSharperReview\Net2991\Frm\obj\Debug\Frm.pdb
 E:\MyRepository\Frm\Frm\obj\Debug\Frm.csproj.ResolveComReference.cache
 E:\MyRepository\Frm\Frm\obj\Debug\Frm.exe
 E:\MyRepository\Frm\Frm\obj\Debug\Frm.pdb
-E:\MyRepository\Frm\Frm\obj\Debug\Frm.csprojResolveAssemblyReference.cache
 E:\MyRepository\Frm\Frm\obj\Debug\Frm.Form1.resources
 E:\MyRepository\Frm\Frm\obj\Debug\Frm.Properties.Resources.resources
 E:\MyRepository\Frm\Frm\obj\Debug\Frm.SplashScreen1.resources
