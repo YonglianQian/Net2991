@@ -21,7 +21,7 @@ namespace Frm
             Login login = new Login();
             if (login.ShowDialog()==DialogResult.OK)
             {
-`                Application.Run(new Form1());
+                Application.Run(new Form1());
             }
             else
             {
