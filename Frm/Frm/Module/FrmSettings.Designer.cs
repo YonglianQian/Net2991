@@ -48,6 +48,8 @@
             this.textEdit5 = new DevExpress.XtraEditors.TextEdit();
             this.textEdit4 = new DevExpress.XtraEditors.TextEdit();
             this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).BeginInit();
@@ -60,6 +62,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
+            this.splitContainerControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupControl1
@@ -70,62 +74,61 @@
             this.groupControl1.Controls.Add(this.labelControl3);
             this.groupControl1.Controls.Add(this.labelControl2);
             this.groupControl1.Controls.Add(this.labelControl1);
-            this.groupControl1.Location = new System.Drawing.Point(12, 12);
+            this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(615, 246);
+            this.groupControl1.Size = new System.Drawing.Size(635, 198);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "板卡配置";
             // 
             // textEdit3
             // 
-            this.textEdit3.Location = new System.Drawing.Point(192, 178);
+            this.textEdit3.Location = new System.Drawing.Point(139, 135);
             this.textEdit3.Name = "textEdit3";
             this.textEdit3.Size = new System.Drawing.Size(100, 20);
             this.textEdit3.TabIndex = 5;
             // 
             // textEdit2
             // 
-            this.textEdit2.Location = new System.Drawing.Point(192, 116);
+            this.textEdit2.Location = new System.Drawing.Point(139, 87);
             this.textEdit2.Name = "textEdit2";
             this.textEdit2.Size = new System.Drawing.Size(100, 20);
             this.textEdit2.TabIndex = 4;
             // 
             // textEdit1
             // 
-            this.textEdit1.Location = new System.Drawing.Point(192, 61);
+            this.textEdit1.Location = new System.Drawing.Point(139, 44);
             this.textEdit1.Name = "textEdit1";
             this.textEdit1.Size = new System.Drawing.Size(100, 20);
             this.textEdit1.TabIndex = 3;
             // 
             // labelControl3
             // 
-            this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.labelControl3.Location = new System.Drawing.Point(68, 184);
+            this.labelControl3.Location = new System.Drawing.Point(32, 138);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(80, 19);
+            this.labelControl3.Size = new System.Drawing.Size(60, 14);
             this.labelControl3.TabIndex = 2;
             this.labelControl3.Text = "本地端口号";
             // 
             // labelControl2
             // 
-            this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.labelControl2.Location = new System.Drawing.Point(68, 122);
+            this.labelControl2.Location = new System.Drawing.Point(32, 90);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(80, 19);
+            this.labelControl2.Size = new System.Drawing.Size(60, 14);
             this.labelControl2.TabIndex = 1;
             this.labelControl2.Text = "设备端口号";
             // 
             // labelControl1
             // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.labelControl1.Location = new System.Drawing.Point(68, 64);
+            this.labelControl1.Location = new System.Drawing.Point(32, 47);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(47, 19);
+            this.labelControl1.Size = new System.Drawing.Size(35, 14);
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "IP地址";
             // 
             // groupControl2
             // 
+            this.groupControl2.Controls.Add(this.simpleButton2);
             this.groupControl2.Controls.Add(this.comboBoxEdit3);
             this.groupControl2.Controls.Add(this.comboBoxEdit2);
             this.groupControl2.Controls.Add(this.labelControl9);
@@ -138,9 +141,10 @@
             this.groupControl2.Controls.Add(this.textEdit5);
             this.groupControl2.Controls.Add(this.textEdit4);
             this.groupControl2.Controls.Add(this.comboBoxEdit1);
-            this.groupControl2.Location = new System.Drawing.Point(13, 264);
+            this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl2.Location = new System.Drawing.Point(0, 0);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(614, 234);
+            this.groupControl2.Size = new System.Drawing.Size(635, 289);
             this.groupControl2.TabIndex = 1;
             this.groupControl2.Text = "通道标定";
             // 
@@ -174,36 +178,31 @@
             // 
             // labelControl9
             // 
-            this.labelControl9.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.labelControl9.Location = new System.Drawing.Point(7, 205);
             this.labelControl9.Name = "labelControl9";
-            this.labelControl9.Size = new System.Drawing.Size(80, 19);
+            this.labelControl9.Size = new System.Drawing.Size(60, 14);
             this.labelControl9.TabIndex = 11;
             this.labelControl9.Text = "通道量程：";
             // 
             // labelControl8
             // 
-            this.labelControl8.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.labelControl8.Location = new System.Drawing.Point(7, 164);
             this.labelControl8.Name = "labelControl8";
-            this.labelControl8.Size = new System.Drawing.Size(112, 19);
+            this.labelControl8.Size = new System.Drawing.Size(84, 14);
             this.labelControl8.TabIndex = 8;
             this.labelControl8.Text = "通道连接方式：";
             // 
             // labelControl7
             // 
-            this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.labelControl7.Location = new System.Drawing.Point(7, 63);
             this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(96, 19);
+            this.labelControl7.Size = new System.Drawing.Size(72, 14);
             this.labelControl7.TabIndex = 7;
             this.labelControl7.Text = "选择通道号：";
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.simpleButton1.Appearance.Options.UseFont = true;
-            this.simpleButton1.Location = new System.Drawing.Point(450, 191);
+            this.simpleButton1.Location = new System.Drawing.Point(500, 225);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(113, 33);
             this.simpleButton1.TabIndex = 6;
@@ -211,29 +210,26 @@
             // 
             // labelControl6
             // 
-            this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.labelControl6.LineVisible = true;
             this.labelControl6.Location = new System.Drawing.Point(7, 106);
             this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(208, 19);
+            this.labelControl6.Size = new System.Drawing.Size(156, 14);
             this.labelControl6.TabIndex = 5;
             this.labelControl6.Text = "提示：使用一级线性公式标定";
             // 
             // labelControl5
             // 
-            this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.labelControl5.Location = new System.Drawing.Point(355, 107);
             this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(57, 19);
+            this.labelControl5.Size = new System.Drawing.Size(43, 14);
             this.labelControl5.TabIndex = 4;
             this.labelControl5.Text = "参数B：";
             // 
             // labelControl4
             // 
-            this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.labelControl4.Location = new System.Drawing.Point(355, 67);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(59, 19);
+            this.labelControl4.Size = new System.Drawing.Size(44, 14);
             this.labelControl4.TabIndex = 3;
             this.labelControl4.Text = "参数A：";
             // 
@@ -294,13 +290,38 @@
             this.comboBoxEdit1.Size = new System.Drawing.Size(139, 20);
             this.comboBoxEdit1.TabIndex = 0;
             // 
+            // splitContainerControl1
+            // 
+            this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerControl1.Horizontal = false;
+            this.splitContainerControl1.IsSplitterFixed = true;
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerControl1.Name = "splitContainerControl1";
+            this.splitContainerControl1.Panel1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.splitContainerControl1.Panel1.Controls.Add(this.groupControl1);
+            this.splitContainerControl1.Panel1.Text = "Panel1";
+            this.splitContainerControl1.Panel2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.splitContainerControl1.Panel2.Controls.Add(this.groupControl2);
+            this.splitContainerControl1.Panel2.Text = "Panel2";
+            this.splitContainerControl1.Size = new System.Drawing.Size(639, 500);
+            this.splitContainerControl1.SplitterPosition = 202;
+            this.splitContainerControl1.TabIndex = 2;
+            this.splitContainerControl1.Text = "splitContainerControl1";
+            // 
+            // simpleButton2
+            // 
+            this.simpleButton2.Location = new System.Drawing.Point(355, 225);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(113, 33);
+            this.simpleButton2.TabIndex = 16;
+            this.simpleButton2.Text = "重置";
+            // 
             // FrmSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(639, 500);
-            this.Controls.Add(this.groupControl2);
-            this.Controls.Add(this.groupControl1);
+            this.Controls.Add(this.splitContainerControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmSettings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -319,6 +340,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
+            this.splitContainerControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -345,5 +368,7 @@
         private DevExpress.XtraEditors.TextEdit textEdit5;
         private DevExpress.XtraEditors.TextEdit textEdit4;
         private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
     }
 }

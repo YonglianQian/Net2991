@@ -90,29 +90,11 @@
     <Compile Include="MainFrm.Designer.cs">
       <DependentUpon>MainFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Module\FrmBasicInformation.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Module\FrmBasicInformation.Designer.cs">
-      <DependentUpon>FrmBasicInformation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Module\FrmConsistencyInformation.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Module\FrmConsistencyInformation.Designer.cs">
-      <DependentUpon>FrmConsistencyInformation.cs</DependentUpon>
-    </Compile>
     <Compile Include="Module\FrmDetailsInformation.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Module\FrmDetailsInformation.Designer.cs">
       <DependentUpon>FrmDetailsInformation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Module\FrmDiscrepancyInformation.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Module\FrmDiscrepancyInformation.Designer.cs">
-      <DependentUpon>FrmDiscrepancyInformation.cs</DependentUpon>
     </Compile>
     <Compile Include="Module\FrmSettings.cs">
       <SubType>Form</SubType>
@@ -149,14 +131,8 @@
     <EmbeddedResource Include="MainFrm.resx">
       <DependentUpon>MainFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Module\FrmBasicInformation.resx">
-      <DependentUpon>FrmBasicInformation.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Module\FrmDetailsInformation.resx">
       <DependentUpon>FrmDetailsInformation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Module\FrmDiscrepancyInformation.resx">
-      <DependentUpon>FrmDiscrepancyInformation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Module\FrmSettings.resx">
       <DependentUpon>FrmSettings.cs</DependentUpon>

@@ -242,6 +242,7 @@
             this.Controls.Add(this.splitContainerControl1);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbon);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Test";
             this.Ribbon = this.ribbon;
             this.StatusBar = this.ribbonStatusBar;
