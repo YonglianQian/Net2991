@@ -140,3 +140,6 @@ E:\MyRepository\Frm\Frm\bin\Debug\ru\DevExpress.Office.v16.1.Core.resources.dll
 E:\MyRepository\Frm\Frm\obj\Debug\Frm.Module.FrmDetailsInformation.resources
 E:\MyRepository\Frm\Frm\obj\Debug\Frm.Module.FrmSettings.resources
 E:\MyRepository\Frm\Frm\obj\Debug\Frm.Module.Test.resources
+C:\Users\Administrator\Desktop\文件中转站\Net299120180111\Frm\Frm\obj\Debug\Frm.csproj.ResolveComReference.cache
+C:\Users\Administrator\Desktop\文件中转站\Net299120180111\Frm\Frm\obj\Debug\Frm.exe
+C:\Users\Administrator\Desktop\文件中转站\Net299120180111\Frm\Frm\obj\Debug\Frm.pdb
