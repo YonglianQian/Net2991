@@ -6,3 +6,4 @@
 *.sln
 Frm/Frm/bin/
 Frm/Frm/obj/
+*.suo
