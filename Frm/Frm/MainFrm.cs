@@ -16,5 +16,20 @@ namespace Frm
         {
             InitializeComponent();
         }
+
+        private void tileItem5_ItemClick(object sender, TileItemEventArgs e)
+        {
+
+        }
+
+        private void tileItem4_ItemClick(object sender, TileItemEventArgs e)
+        {
+
+        }
+
+        private void tileItem1_ItemClick(object sender, TileItemEventArgs e)
+        {
+
+        }
     }
 }

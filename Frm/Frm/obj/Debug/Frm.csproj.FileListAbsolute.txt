@@ -61,3 +61,5 @@ E:\MyRepository\Frm\Frm\bin\Debug\es\DevExpress.XtraLayout.v16.1.resources.dll
 E:\MyRepository\Frm\Frm\bin\Debug\ja\DevExpress.XtraLayout.v16.1.resources.dll
 E:\MyRepository\Frm\Frm\bin\Debug\ru\DevExpress.XtraLayout.v16.1.resources.dll
 E:\MyRepository\Frm\Frm\obj\Debug\Frm.MainFrm.resources
+E:\MyRepository\Frm\Frm\obj\Debug\Frm.Module.FrmBasicInformation.resources
+E:\MyRepository\Frm\Frm\obj\Debug\Frm.Module.FrmDiscrepancyInformation.resources

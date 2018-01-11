@@ -44,7 +44,7 @@ namespace Frm
         {
             if (e.KeyCode==Keys.Enter)
             {
-                this.button2_Click(sender, e);
+                button2_Click(sender, e);
             }
         }
     }
