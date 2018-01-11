@@ -80,7 +80,7 @@
             this.tileItem1.AppearanceItem.Normal.Font = new System.Drawing.Font("Tahoma", 16F);
             this.tileItem1.AppearanceItem.Normal.Options.UseBackColor = true;
             this.tileItem1.AppearanceItem.Normal.Options.UseFont = true;
-            tileItemElement1.Text = "开始任务";
+            tileItemElement1.Text = "测试管理";
             this.tileItem1.Elements.Add(tileItemElement1);
             this.tileItem1.Id = 0;
             this.tileItem1.ItemSize = DevExpress.XtraEditors.TileItemSize.Medium;
@@ -97,7 +97,7 @@
             // 
             this.tileItem6.AppearanceItem.Normal.Font = new System.Drawing.Font("Tahoma", 16F);
             this.tileItem6.AppearanceItem.Normal.Options.UseFont = true;
-            tileItemElement2.Text = "详细信息";
+            tileItemElement2.Text = "数据管理";
             this.tileItem6.Elements.Add(tileItemElement2);
             this.tileItem6.Id = 5;
             this.tileItem6.ItemSize = DevExpress.XtraEditors.TileItemSize.Medium;
@@ -116,7 +116,7 @@
             this.tileItem5.AppearanceItem.Normal.Font = new System.Drawing.Font("Tahoma", 16F);
             this.tileItem5.AppearanceItem.Normal.Options.UseBackColor = true;
             this.tileItem5.AppearanceItem.Normal.Options.UseFont = true;
-            tileItemElement3.Text = "参数配置";
+            tileItemElement3.Text = "系统管理";
             this.tileItem5.Elements.Add(tileItemElement3);
             this.tileItem5.Id = 4;
             this.tileItem5.ItemSize = DevExpress.XtraEditors.TileItemSize.Medium;
