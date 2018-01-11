@@ -210,4 +210,6 @@ FakesAssemblies/
 GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
-/Frm/Frm
+
+/Frm/Frm/bin
+/Frm/Frm/obj
