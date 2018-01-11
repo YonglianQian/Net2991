@@ -28,21 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraEditors.TileItemElement tileItemElement21 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement22 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement23 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement24 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement25 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement1 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement2 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement3 = new DevExpress.XtraEditors.TileItemElement();
             this.tileControl1 = new DevExpress.XtraEditors.TileControl();
             this.tileGroup1 = new DevExpress.XtraEditors.TileGroup();
-            this.tileGroup2 = new DevExpress.XtraEditors.TileGroup();
-            this.tileGroup3 = new DevExpress.XtraEditors.TileGroup();
             this.tileItem1 = new DevExpress.XtraEditors.TileItem();
-            this.tileItem2 = new DevExpress.XtraEditors.TileItem();
-            this.tileItem3 = new DevExpress.XtraEditors.TileItem();
+            this.tileGroup2 = new DevExpress.XtraEditors.TileGroup();
+            this.tileItem6 = new DevExpress.XtraEditors.TileItem();
+            this.tileGroup3 = new DevExpress.XtraEditors.TileGroup();
             this.tileItem5 = new DevExpress.XtraEditors.TileItem();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.tileItem6 = new DevExpress.XtraEditors.TileItem();
             this.SuspendLayout();
             // 
             // tileControl1
@@ -68,7 +64,6 @@
             this.tileControl1.MaxId = 6;
             this.tileControl1.Name = "tileControl1";
             this.tileControl1.SelectionColor = System.Drawing.Color.Empty;
-            this.tileControl1.ShowGroupText = true;
             this.tileControl1.Size = new System.Drawing.Size(784, 562);
             this.tileControl1.TabIndex = 0;
             this.tileControl1.Text = "插箱测试系统";
@@ -76,16 +71,38 @@
             // tileGroup1
             // 
             this.tileGroup1.Items.Add(this.tileItem1);
-            this.tileGroup1.Items.Add(this.tileItem2);
-            this.tileGroup1.Items.Add(this.tileItem3);
             this.tileGroup1.Name = "tileGroup1";
-            this.tileGroup1.Text = "开始任务";
+            this.tileGroup1.Text = "测试";
+            // 
+            // tileItem1
+            // 
+            this.tileItem1.AppearanceItem.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.tileItem1.AppearanceItem.Normal.Font = new System.Drawing.Font("Tahoma", 16F);
+            this.tileItem1.AppearanceItem.Normal.Options.UseBackColor = true;
+            this.tileItem1.AppearanceItem.Normal.Options.UseFont = true;
+            tileItemElement1.Text = "开始任务";
+            this.tileItem1.Elements.Add(tileItemElement1);
+            this.tileItem1.Id = 0;
+            this.tileItem1.ItemSize = DevExpress.XtraEditors.TileItemSize.Medium;
+            this.tileItem1.Name = "tileItem1";
+            this.tileItem1.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.tileItem1_ItemClick);
             // 
             // tileGroup2
             // 
             this.tileGroup2.Items.Add(this.tileItem6);
             this.tileGroup2.Name = "tileGroup2";
-            this.tileGroup2.Text = "数据";
+            this.tileGroup2.Text = "数据管理";
+            // 
+            // tileItem6
+            // 
+            this.tileItem6.AppearanceItem.Normal.Font = new System.Drawing.Font("Tahoma", 16F);
+            this.tileItem6.AppearanceItem.Normal.Options.UseFont = true;
+            tileItemElement2.Text = "详细信息";
+            this.tileItem6.Elements.Add(tileItemElement2);
+            this.tileItem6.Id = 5;
+            this.tileItem6.ItemSize = DevExpress.XtraEditors.TileItemSize.Medium;
+            this.tileItem6.Name = "tileItem6";
+            this.tileItem6.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.tileItem6_ItemClick);
             // 
             // tileGroup3
             // 
@@ -93,35 +110,14 @@
             this.tileGroup3.Name = "tileGroup3";
             this.tileGroup3.Text = "系统配置";
             // 
-            // tileItem1
-            // 
-            tileItemElement21.Text = "开始";
-            this.tileItem1.Elements.Add(tileItemElement21);
-            this.tileItem1.Id = 0;
-            this.tileItem1.ItemSize = DevExpress.XtraEditors.TileItemSize.Medium;
-            this.tileItem1.Name = "tileItem1";
-            this.tileItem1.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.tileItem1_ItemClick);
-            // 
-            // tileItem2
-            // 
-            tileItemElement22.Text = "一致性数据";
-            this.tileItem2.Elements.Add(tileItemElement22);
-            this.tileItem2.Id = 1;
-            this.tileItem2.ItemSize = DevExpress.XtraEditors.TileItemSize.Medium;
-            this.tileItem2.Name = "tileItem2";
-            // 
-            // tileItem3
-            // 
-            tileItemElement23.Text = "差异性信息";
-            this.tileItem3.Elements.Add(tileItemElement23);
-            this.tileItem3.Id = 2;
-            this.tileItem3.ItemSize = DevExpress.XtraEditors.TileItemSize.Medium;
-            this.tileItem3.Name = "tileItem3";
-            // 
             // tileItem5
             // 
-            tileItemElement24.Text = "板卡参数";
-            this.tileItem5.Elements.Add(tileItemElement24);
+            this.tileItem5.AppearanceItem.Normal.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.tileItem5.AppearanceItem.Normal.Font = new System.Drawing.Font("Tahoma", 16F);
+            this.tileItem5.AppearanceItem.Normal.Options.UseBackColor = true;
+            this.tileItem5.AppearanceItem.Normal.Options.UseFont = true;
+            tileItemElement3.Text = "参数配置";
+            this.tileItem5.Elements.Add(tileItemElement3);
             this.tileItem5.Id = 4;
             this.tileItem5.ItemSize = DevExpress.XtraEditors.TileItemSize.Medium;
             this.tileItem5.Name = "tileItem5";
@@ -139,14 +135,6 @@
             this.labelControl1.Size = new System.Drawing.Size(457, 36);
             this.labelControl1.TabIndex = 1;
             this.labelControl1.Text = "实时信号采集测量与仿真系统平台";
-            // 
-            // tileItem6
-            // 
-            tileItemElement25.Text = "详细信息";
-            this.tileItem6.Elements.Add(tileItemElement25);
-            this.tileItem6.Id = 5;
-            this.tileItem6.ItemSize = DevExpress.XtraEditors.TileItemSize.Medium;
-            this.tileItem6.Name = "tileItem6";
             // 
             // MainFrm
             // 
@@ -168,8 +156,6 @@
         private DevExpress.XtraEditors.TileControl tileControl1;
         private DevExpress.XtraEditors.TileGroup tileGroup1;
         private DevExpress.XtraEditors.TileItem tileItem1;
-        private DevExpress.XtraEditors.TileItem tileItem2;
-        private DevExpress.XtraEditors.TileItem tileItem3;
         private DevExpress.XtraEditors.TileGroup tileGroup2;
         private DevExpress.XtraEditors.TileGroup tileGroup3;
         private DevExpress.XtraEditors.TileItem tileItem5;
