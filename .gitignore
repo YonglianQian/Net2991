@@ -2,7 +2,7 @@
 # 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
 ################################################################################
 
-/Frm/Frm/obj/Debug
-/Frm/Frm/bin/Debug
+/Frm/Frm/obj/
+/Frm/Frm/bin/
 *.sln
 *.suo
