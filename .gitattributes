@@ -62,6 +62,4 @@
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
 
-/Frm/Frm/bin
-/Frm/Frm/obj
 
