@@ -143,3 +143,6 @@ E:\MyRepository\Frm\Frm\obj\Debug\Frm.Module.Test.resources
 C:\Users\Administrator\Desktop\文件中转站\Net299120180111\Frm\Frm\obj\Debug\Frm.csproj.ResolveComReference.cache
 C:\Users\Administrator\Desktop\文件中转站\Net299120180111\Frm\Frm\obj\Debug\Frm.exe
 C:\Users\Administrator\Desktop\文件中转站\Net299120180111\Frm\Frm\obj\Debug\Frm.pdb
+E:\Net2991Demo\Frm\Frm\obj\Debug\Frm.csproj.ResolveComReference.cache
+E:\Net2991Demo\Frm\Frm\obj\Debug\Frm.exe
+E:\Net2991Demo\Frm\Frm\obj\Debug\Frm.pdb
