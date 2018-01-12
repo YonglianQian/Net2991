@@ -60,3 +60,6 @@ E:\MyRepository\Frm\Frm\bin\Debug\de\DevExpress.XtraLayout.v16.1.resources.dll
 E:\MyRepository\Frm\Frm\bin\Debug\es\DevExpress.XtraLayout.v16.1.resources.dll
 E:\MyRepository\Frm\Frm\bin\Debug\ja\DevExpress.XtraLayout.v16.1.resources.dll
 E:\MyRepository\Frm\Frm\bin\Debug\ru\DevExpress.XtraLayout.v16.1.resources.dll
+E:\Net2991Demo\Frm\Frm\obj\Debug\Frm.csproj.ResolveComReference.cache
+E:\Net2991Demo\Frm\Frm\obj\Debug\Frm.exe
+E:\Net2991Demo\Frm\Frm\obj\Debug\Frm.pdb
