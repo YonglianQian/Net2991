@@ -58,5 +58,10 @@ namespace Frm.Module
                 diagram.AxisX.WholeRange.SetMinMaxValues(minDate, argu);
             }
         }
+
+        private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
     }
 }
