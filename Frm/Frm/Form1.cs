@@ -12,7 +12,6 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
-using static Frm.Common.NET2991;
 
 namespace Frm
 {
@@ -1062,7 +1061,7 @@ namespace Frm
         private void button17_Click(object sender, EventArgs e)
         {
             CfgPara.AIParam.szDevName = new sbyte[32];
-            CfgPara.AIParam.CHParam = new NET2991_CH_PARAM[17];
+            CfgPara.AIParam.CHParam = new Frm.Common.NET2991.NET2991_CH_PARAM[17];
             //通道总数
             Int32 dwchanCnt = 0;
 
