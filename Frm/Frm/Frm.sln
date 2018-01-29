@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frm", "Frm.csproj", "{DB0E5DE2-445B-417B-AC89-C7F5079FA506}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sys", "..\..\..\NET2991\Simple\FiniteAcq_NoReReadData\Sys.csproj", "{9A4C4F94-0781-41EE-8679-C33450A31403}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sys", "..\..\..\NET2991Official\Simple\FiniteAcq_NoReReadData\Sys.csproj", "{9A4C4F94-0781-41EE-8679-C33450A31403}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

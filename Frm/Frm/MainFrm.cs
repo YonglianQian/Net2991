@@ -28,6 +28,9 @@ namespace Frm
         {
             Test test = new Test();
             test.ShowDialog();
+           
+            
+            
         }
 
         private void tileItem6_ItemClick(object sender, TileItemEventArgs e)

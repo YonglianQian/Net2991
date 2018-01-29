@@ -37,15 +37,12 @@ namespace Frm
                 }
             }
             //登录验证
-            Login login = new Login();
-            if (login.ShowDialog()==DialogResult.OK)
-            {
+            //Login login = new Login();
+            //if (login.ShowDialog()==DialogResult.OK)
+            //{
                 Application.Run(new MainFrm());
-            }
-            else
-            {
-                
-            }
+            //}
+            
             
         }
     }

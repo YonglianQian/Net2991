@@ -15,6 +15,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using DevExpress.XtraSplashScreen;
 using System.IO;
+using System.Configuration;
 
 namespace Frm.Module
 {
@@ -38,8 +39,9 @@ namespace Frm.Module
 
         private void barButtonItem4_ItemClick(object sender, ItemClickEventArgs e)
         {
+            //设置数据采集卡参数
             InitSettings();
-            UInt32 bReRead = 0;
+
             UInt16 nDataTranDir = NET2991.NET2991_AI_TRANDIR_CLIENT;
 
             CfgPara1.hDevice = NET2991.NET2991_DEV_Create(CfgPara1.AIParam.nDeviceIP,
@@ -68,7 +70,7 @@ namespace Frm.Module
 
             // 设置是否重读
             UInt32 nLastSamps = 0;
-            if (NET2991.NET2991_AI_SetReReadData(CfgPara1.hDevice, ref CfgPara1.AIParam, ref nLastSamps, bReRead) == 0|| NET2991.NET2991_AI_SetReReadData(CfgPara2.hDevice, ref CfgPara2.AIParam, ref nLastSamps, bReRead) == 0)
+            if (NET2991.NET2991_AI_SetReReadData(CfgPara1.hDevice, ref CfgPara1.AIParam, ref nLastSamps, 0) == 0|| NET2991.NET2991_AI_SetReReadData(CfgPara2.hDevice, ref CfgPara2.AIParam, ref nLastSamps, 0) == 0)
             {
                 XtraMessageBox.Show("设置重读失败!");
                 goto ExitRead;
@@ -118,10 +120,8 @@ namespace Frm.Module
                 goto ExitRead;
             }
 
-            UInt32 dwStsCnt = 0;
             while (true)
             {
-                dwStsCnt++;
                 NET2991.NET2991_AI_SendSoftTrig(CfgPara1.hDevice);
                 NET2991.NET2991_AI_SendSoftTrig(CfgPara2.hDevice);
                 Thread.Sleep(1);
@@ -140,18 +140,9 @@ namespace Frm.Module
                 Thread.Sleep(80);
             }
             
-            //处理
+            //异步方法执行采集数据任务
             Start_MyTask();
             return;
-
-
-
-
-
-
-
-
-
 
 
 
@@ -182,10 +173,10 @@ namespace Frm.Module
             UInt32 dwSampsPerChanRead = 0;
             UInt32 dwAvailSampsPerChan = 0;
             UInt32 dwTotalDataSize = 0;
-            double fTimeOut =300;
+            double fTimeOut =-1.0;
             UInt32 nChanSize = (uint)(CfgPara1.nReadLength * 2);//每通道数据读取长度
 
-           
+                
             FileStream fs = new FileStream(@"C:\1.dat", FileMode.Create, FileAccess.ReadWrite);
             BinaryWriter bw = new BinaryWriter(fs);
                 while (true)
@@ -197,20 +188,15 @@ namespace Frm.Module
                     }
 
                     dwTotalDataSize += (dwSampsPerChanRead * 2);
-                    for (int i = 0; i < 16; i++)
+                    for (int j = 0; j < dwSampsPerChanRead; j++)
                     {
-                        if (dwReadChan1 == i)
-                        {
-                            for (int j = 0; j < dwSampsPerChanRead; j++)
-                            {
-                                bw.Write(Convert.ToSingle((nAIArray1[j] & 0xFFFF) * (20000.00 / 65536) - 10000.00));
-                            }
-
-                        }
+                        bw.Write(Convert.ToSingle((nAIArray1[j] & 0xFFFF) * (20000.00 / 65536) - 10000.00));
                     }
                     if (dwTotalDataSize >= CfgPara1.dwRealReadLen)
                     {
-                        break;
+
+                        NET2991.NET2991_AI_SetReadComplete(CfgPara1.hDevice);
+                            break;
                     }
                 }
                 dwTotalDataSize = 0;
@@ -222,18 +208,24 @@ namespace Frm.Module
                         continue;
                     }
                     dwTotalDataSize += (dwSampsPerChanRead * 2);
+
+                    for (int i = 0; i < dwSampsPerChanRead; i++)
+                    {
+                        bw.Write(Convert.ToSingle((nAIArray2[i] & 0xFFFF) * (20000.00 / 65536) - 10000.00));
+                    }
+                        
                     if (dwTotalDataSize>=CfgPara2.dwRealReadLen)
                     {
-                        NET2991.NET2991_AI_SetReadComplete(CfgPara1.hDevice);
                         NET2991.NET2991_AI_SetReadComplete(CfgPara2.hDevice);
-                        if (CfgPara1.hDevice != (IntPtr)(-1))
+                        XtraMessageBox.Show("文件保存完毕");
+                        if (CfgPara2.hDevice != (IntPtr)(-1)||CfgPara1.hDevice!=(IntPtr)(-1))
                         {
-                            NET2991.NET2991_AI_StopTask(CfgPara1.hDevice);
-                            NET2991.NET2991_DEV_Release(CfgPara1.hDevice);
-                            CfgPara1.hDevice = (IntPtr)(-1);
                             NET2991.NET2991_AI_StopTask(CfgPara2.hDevice);
                             NET2991.NET2991_DEV_Release(CfgPara2.hDevice);
                             CfgPara2.hDevice = (IntPtr)(-1);
+                            NET2991.NET2991_AI_StopTask(CfgPara1.hDevice);
+                            NET2991.NET2991_DEV_Release(CfgPara1.hDevice);
+                            CfgPara1.hDevice = (IntPtr)(-1);
                         }
                         break;
                     }
@@ -318,10 +310,17 @@ namespace Frm.Module
             //NET2991.NET2991_DEV_Init(4096);
             for (int i = 0; i < 32; i++)
             {
-                CfgPara2.AIParam.szDevName[i] = 0;
+                if (i==16)
+                {
+                    CfgPara2.AIParam.szDevName[i] = 1;
+                }
+                else
+                {
+                    CfgPara2.AIParam.szDevName[i] = 0;
+                }
             }
             CfgPara2.AIParam.nDeviceIP = (UInt32)(System.Net.IPAddress.NetworkToHostOrder(inet_addr("192.168.0.151")));
-            CfgPara2.AIParam.nDevicePort = 9000;
+            CfgPara2.AIParam.nDevicePort = 9001;
             CfgPara2.AIParam.nLocalPort = 8001;
             for (int i = 0; i < 17; i++)
             {
@@ -358,10 +357,260 @@ namespace Frm.Module
             CfgPara2.hDevice = (IntPtr)(-1);
         }
 
+        //读取两张卡数据文件并显示
         private void barButtonItem5_ItemClick(object sender, ItemClickEventArgs e)
         {
-            //FileStream fs = new FileStream(@"C:\1.dat", FileMode.Open, FileAccess.Read);
-            //BinaryReader br = new BinaryReader(fs);
+            DataTable dt = new DataTable();
+            DataColumn[] dcArray = new DataColumn[1025];
+            for (int i = 0; i < dcArray.Length; i++)
+            {
+                dcArray[i] = new DataColumn();
+                if (i==0)
+                {
+                    dcArray[i].ColumnName = "通道号";
+                }
+                else
+                {
+                    dcArray[i].ColumnName = "第" + i + "个采样点";
+                }
+            }
+            dt.Columns.AddRange(dcArray);
+            FileStream fs = new FileStream(@"C:\1.dat", FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            BinaryReader br = new BinaryReader(fs);
+            for (int i = 0; i < 32; i++)
+            {
+                DataRow dr = dt.NewRow();
+                dr[0] = "通道" + i;
+                for (int j = 1; j< 1025; j++)
+                {
+                    dr[j] = br.ReadSingle();
+                }
+                dt.Rows.Add(dr);
+            }
+            br.Close();
+            fs.Close();
+            this.vGridControl1.DataSource = dt;
+        }
+
+        //单卡有限采集保存文件
+        private void barButtonItem6_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            InitOneCardSettings();
+            UInt16 nDataTranDir = NET2991.NET2991_AI_TRANDIR_CLIENT;
+            //创建设备
+            CfgPara1.hDevice = NET2991.NET2991_DEV_Create(CfgPara1.AIParam.nDeviceIP, CfgPara1.AIParam.nDevicePort, CfgPara1.AIParam.nLocalPort, nDataTranDir, 0.2, 0.2, 2);
+
+            //配置参数
+            UInt32 nLastSamps = 0;
+            bool flag = CfgPara1.hDevice == (IntPtr)(-1)||NET2991.NET2991_DEV_IsLink(CfgPara1.hDevice)==0||NET2991.NET2991_AI_SetReadOffsetAndLength(CfgPara1.hDevice,CfgPara1.nReadOffset,CfgPara1.nReadLength)==0||NET2991.NET2991_AI_SetReReadData(CfgPara1.hDevice,ref CfgPara1.AIParam,ref nLastSamps,0)==0||NET2991.NET2991_AI_IsSaveFile(CfgPara1.hDevice,0)==0||NET2991.NET2991_AI_InitTask(CfgPara1.hDevice,ref CfgPara1.AIParam,(IntPtr)(-1))==0||NET2991.NET2991_AI_GetClockStatus(CfgPara1.hDevice,ref Sts)==0;
+
+            if (flag)
+            {
+                XtraMessageBox.Show("发生了错误","出错提示",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                goto ExitRead;
+            }
+
+            //实际总共需要读取的数据数
+            CfgPara1.dwRealReadLen = 2 * 16 * CfgPara1.nReadLength;
+            //初始化
+            CfgPara1.nSampStatus = UserDef.CMD_UNCPT;
+            CfgPara1.dwReadDataSize = 0;
+            CfgPara1.bAIStatus = 0;
+            CfgPara1.dwFrameLen = UserDef.LMT_FRMCNT;
+            NET2991.NET2991_AI_ClearBuffer(CfgPara1.hDevice);
+            //启动采样
+            if (NET2991.NET2991_AI_StartTask(CfgPara1.hDevice)==0)
+            {
+                XtraMessageBox.Show("启动采样任务失败");
+                goto ExitRead;
+            }
+            //状态获取
+            while (true)
+            {
+                NET2991.NET2991_AI_SendSoftTrig(CfgPara1.hDevice);
+                Thread.Sleep(1);
+                //得到状态
+                if (NET2991.NET2991_AI_GetStatus(CfgPara1.hDevice,ref Sts)==0)
+                {
+                    XtraMessageBox.Show("获取状态失败");
+                    goto ExitRead;
+                }
+                if (Sts.bTaskDone == 1)
+                {
+                    XtraMessageBox.Show("得到状态");
+                    CfgPara1.bAIStatus = 1;
+                    break;
+                }
+                Thread.Sleep(80);
+            }
+            Start_MyInfiniteNoSaveFile();
+            return;
+            
+            ExitRead:
+            if (CfgPara1.hDevice!=(IntPtr)(-1))
+            {
+                NET2991.NET2991_AI_StopTask(CfgPara1.hDevice);
+                NET2991.NET2991_DEV_Release(CfgPara1.hDevice);
+                CfgPara1.hDevice = (IntPtr)(-1);
+            }
+
+                
+        }
+        
+        async void Start_MyInfiniteNoSaveFile()
+        {
+            await Task.Run(() =>
+            {
+                UInt16[] nAIArray = new ushort[2048];
+                UInt32 dwReadChan = 0;
+                UInt32 dwReadSampsPerChan = 0;
+                UInt32 dwSampsPerChanRead = 0;
+                UInt32 dwAvailSampsPerChan = 0;
+                UInt32 dwTotalDataSize = 0;
+                double fTimeOut = -1.0;
+                Int32 nIndex = 0;
+                //根据用户设置的读取长度设置每通道数据的读取长度
+                UInt32 nChanSize = (uint)(CfgPara1.nReadLength * 2);
+                //读取数据
+                dwTotalDataSize = 0;
+                FileStream fs = new FileStream(@"C:\2.dat", FileMode.Create, FileAccess.ReadWrite);
+                BinaryWriter bw = new BinaryWriter(fs);
+                while (true)
+                {
+                    dwReadSampsPerChan = 0;
+                    if (NET2991.NET2991_AI_ReadBinary(CfgPara1.hDevice, ref dwReadChan, nAIArray, dwReadSampsPerChan, ref dwSampsPerChanRead, ref dwAvailSampsPerChan, fTimeOut) == 0)
+                    {
+                        continue;
+                    }
+                    dwTotalDataSize += (dwSampsPerChanRead * 2);
+                    for (int j = 0; j < dwSampsPerChanRead; j++)
+                    {
+                        bw.Write(Convert.ToSingle((nAIArray[j] & 0xFFFF) * 20000.00 / 65536 - 10000.00));
+                    }
+                    if (dwTotalDataSize >= CfgPara1.dwRealReadLen)
+                    {
+                        NET2991.NET2991_AI_SetReadComplete(CfgPara1.hDevice);
+                        XtraMessageBox.Show("数据读取已经完成,点击退出");
+                        if (CfgPara1.hDevice != (IntPtr)(-1))
+                        {
+                            NET2991.NET2991_AI_StopTask(CfgPara1.hDevice);
+                            NET2991.NET2991_DEV_Release(CfgPara1.hDevice);
+                            CfgPara1.hDevice = (IntPtr)(-1);
+                        }
+                        break;
+                    }
+                }
+                bw.Close();
+                fs.Close();
+                if (CfgPara1.hDevice != (IntPtr)(-1))
+                {
+                    NET2991.NET2991_AI_StopTask(CfgPara1.hDevice);
+                    NET2991.NET2991_DEV_Release(CfgPara1.hDevice);
+                    CfgPara1.hDevice = (IntPtr)(-1);
+                }
+
+            });
+        }
+        void InitOneCardSettings()
+        {
+            CfgPara1.AIParam.szDevName = new sbyte[32];
+            CfgPara1.AIParam.CHParam = new NET2991.NET2991_CH_PARAM[17];
+            NET2991.NET2991_DEV_Init(4096);
+            for (int i = 0; i < 32; i++)
+            {
+                CfgPara1.AIParam.szDevName[i] = 0;
+            }
+            CfgPara1.AIParam.nDeviceIP = (UInt32)(System.Net.IPAddress.NetworkToHostOrder(inet_addr("192.168.0.150")));
+            CfgPara1.AIParam.nDevicePort = 9000;
+            CfgPara1.AIParam.nLocalPort = 8000;
+            for (int i = 0; i < 17; i++)
+            {
+                if (i == 16)
+                {
+                    CfgPara1.AIParam.CHParam[i].bChannelEn = 0;
+                }
+                else
+                {
+                    CfgPara1.AIParam.CHParam[i].bChannelEn = 1;
+                    CfgPara1.AIParam.CHParam[i].nSampleRange = NET2991.NET2991_AI_SAMPRANGE_N10_P10V;
+                    CfgPara1.AIParam.CHParam[i].nRefGround = NET2991.NET2991_AI_REFGND_DIFF;
+                }
+            }
+            CfgPara1.AIParam.fSampleRate = 1000000;
+            CfgPara1.AIParam.nSampleMode = NET2991.NET2991_AI_SAMPMODE_FINITE;
+            CfgPara1.AIParam.nSampsPerChan = 1024;
+            CfgPara1.AIParam.nClockSource = NET2991.NET2991_AI_CLOCKSRC_LOCAL;
+            CfgPara1.AIParam.nReserved0 = 0;
+
+            CfgPara1.AIParam.nTriggerSource = NET2991.NET2991_AI_TRIGSRC_ANALOG;
+            CfgPara1.AIParam.nTriggerDir = NET2991.NET2991_AI_TRIGDIR_FALLING;
+            CfgPara1.AIParam.fTriggerLevel = 0; //触发电平
+            CfgPara1.AIParam.nDelaySamps = 0;
+            CfgPara1.AIParam.nReTriggerCount = 1;
+
+            CfgPara1.AIParam.bMasterEn = 1;
+            CfgPara1.AIParam.nReserved1 = 0;
+            CfgPara1.AIParam.nReserved2 = 0;
+
+            CfgPara1.nReadOffset = 0;
+            CfgPara1.nReadLength = 1024;
+            CfgPara1.hDevice = (IntPtr)(-1);
+
+        }
+
+        //读取文件并显示
+        private void barButtonItem7_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            DataTable dt = new DataTable();
+            DataColumn[] dcArray = new DataColumn[1025];
+            for (int i = 0; i < dcArray.Length; i++)
+            {
+                dcArray[i] = new DataColumn();
+                if (i==0)
+                {
+                    dcArray[i].ColumnName = "通道号";
+                }
+                else
+                {
+                    dcArray[i].ColumnName = "第" + i + "个采样点";
+                }
+            }
+            dt.Columns.AddRange(dcArray);
+            FileStream fs = new FileStream(@"C:\2.dat", FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            BinaryReader br = new BinaryReader(fs);
+            for (int i = 0; i < 16; i++)
+            {
+                DataRow dr = dt.NewRow();
+                dr[0] = "第" + i + "通道";
+                for (int j = 1; j < 1025; j++)
+                {
+                    dr[j] = br.ReadSingle();
+                }
+                dt.Rows.Add(dr);
+            }
+            br.Close();
+            fs.Close();
+            this.vGridControl1.DataSource = dt;
+            
+        }
+
+        private void barButtonItem3_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            
+        }
+
+        private void barButtonItem8_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            string str = Environment.CurrentDirectory;
+            string str1 = Application.StartupPath;
+            string str2 = AppDomain.CurrentDomain.BaseDirectory;
+
+            string name = Guid.NewGuid().ToString();
+            string dbFilePath = new AppSettingsReader().GetValue("FileDirectory", typeof(string)) as string;
+            string filename = dbFilePath + name + ".dat";
+            FileStream fs = new FileStream(filename, FileMode.Create, FileAccess.ReadWrite);
+            fs.Close();
+            XtraMessageBox.Show(filename);
         }
     }
 }
