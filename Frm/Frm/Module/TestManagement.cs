@@ -11,9 +11,9 @@ using DevExpress.XtraCharts;
 
 namespace Frm.Module
 {
-    public partial class Test : DevExpress.XtraBars.Ribbon.RibbonForm
+    public partial class TestManagement : DevExpress.XtraBars.Ribbon.RibbonForm
     {
-        public Test()
+        public TestManagement()
         {
             InitializeComponent();
         }

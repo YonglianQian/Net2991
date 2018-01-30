@@ -102,11 +102,11 @@
     <Compile Include="Module\FrmSettings.Designer.cs">
       <DependentUpon>FrmSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Module\Test.cs">
+    <Compile Include="Module\TestManagement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Module\Test.Designer.cs">
-      <DependentUpon>Test.cs</DependentUpon>
+    <Compile Include="Module\TestManagement.Designer.cs">
+      <DependentUpon>TestManagement.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -137,8 +137,8 @@
     <EmbeddedResource Include="Module\FrmSettings.resx">
       <DependentUpon>FrmSettings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Module\Test.resx">
-      <DependentUpon>Test.cs</DependentUpon>
+    <EmbeddedResource Include="Module\TestManagement.resx">
+      <DependentUpon>TestManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

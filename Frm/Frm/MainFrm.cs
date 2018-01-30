@@ -26,7 +26,7 @@ namespace Frm
 
         private void tileItem1_ItemClick(object sender, TileItemEventArgs e)
         {
-            Test test = new Test();
+            TestManagement test = new TestManagement();
             test.ShowDialog();
         }
 

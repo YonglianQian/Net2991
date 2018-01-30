@@ -1,6 +1,6 @@
 ﻿namespace Frm.Module
 {
-    partial class Test
+    partial class TestManagement
     {
         /// <summary>
         /// Required designer variable.
@@ -28,8 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Test));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TestManagement));
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
@@ -38,7 +37,6 @@
             DevExpress.XtraCharts.RegressionLine regressionLine1 = new DevExpress.XtraCharts.RegressionLine();
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonGroup1 = new DevExpress.XtraBars.BarButtonGroup();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.Home = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -55,7 +53,7 @@
             this.信号VPP = new DevExpress.XtraGrid.Columns.GridColumn();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.chart = new DevExpress.XtraCharts.ChartControl();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer1 = new System.Windows.Forms.Timer();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -70,11 +68,14 @@
             // 
             // ribbon
             // 
+            this.ribbon.AllowMdiChildButtons = false;
+            this.ribbon.AllowMinimizeRibbon = false;
+            this.ribbon.ApplicationIcon = ((System.Drawing.Bitmap)(resources.GetObject("ribbon.ApplicationIcon")));
+            this.ribbon.DrawGroupCaptions = DevExpress.Utils.DefaultBoolean.False;
             this.ribbon.ExpandCollapseItem.Id = 0;
             this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbon.ExpandCollapseItem,
             this.barButtonItem1,
-            this.barButtonGroup1,
             this.barButtonItem2,
             this.barButtonItem3});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
@@ -82,8 +83,12 @@
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.Home});
-            this.ribbon.Size = new System.Drawing.Size(928, 147);
+            this.ribbon.ShowExpandCollapseButton = DevExpress.Utils.DefaultBoolean.False;
+            this.ribbon.ShowQatLocationSelector = false;
+            this.ribbon.ShowToolbarCustomizeItem = false;
+            this.ribbon.Size = new System.Drawing.Size(928, 128);
             this.ribbon.StatusBar = this.ribbonStatusBar;
+            this.ribbon.Toolbar.ShowCustomizeItem = false;
             // 
             // barButtonItem1
             // 
@@ -93,12 +98,6 @@
             this.barButtonItem1.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.LargeGlyph")));
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
-            // 
-            // barButtonGroup1
-            // 
-            this.barButtonGroup1.Caption = "barButtonGroup1";
-            this.barButtonGroup1.Id = 2;
-            this.barButtonGroup1.Name = "barButtonGroup1";
             // 
             // barButtonItem2
             // 
@@ -161,7 +160,7 @@
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.MenuManager = this.ribbon;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(308, 512);
+            this.gridControl1.Size = new System.Drawing.Size(308, 531);
             this.gridControl1.TabIndex = 2;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -218,7 +217,7 @@
             // 
             this.splitContainerControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControl1.Location = new System.Drawing.Point(0, 147);
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 128);
             this.splitContainerControl1.Name = "splitContainerControl1";
             this.splitContainerControl1.Panel1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.splitContainerControl1.Panel1.Controls.Add(this.gridControl1);
@@ -226,7 +225,7 @@
             this.splitContainerControl1.Panel2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.splitContainerControl1.Panel2.Controls.Add(this.chart);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(928, 520);
+            this.splitContainerControl1.Size = new System.Drawing.Size(928, 539);
             this.splitContainerControl1.SplitterPosition = 312;
             this.splitContainerControl1.TabIndex = 3;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -262,7 +261,7 @@
             series1.View = splineSeriesView1;
             this.chart.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
         series1};
-            this.chart.Size = new System.Drawing.Size(603, 512);
+            this.chart.Size = new System.Drawing.Size(603, 531);
             this.chart.TabIndex = 4;
             // 
             // timer1
@@ -270,7 +269,7 @@
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // Test
+            // TestManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -279,8 +278,10 @@
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbon);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "Test";
+            this.Name = "TestManagement";
             this.Ribbon = this.ribbon;
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StatusBar = this.ribbonStatusBar;
             this.Text = "测试";
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
@@ -305,7 +306,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
-        private DevExpress.XtraBars.BarButtonGroup barButtonGroup1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
