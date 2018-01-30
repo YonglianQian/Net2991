@@ -24,7 +24,7 @@ namespace Frm
             }
             else
             {
-                //this.DialogResult = DialogResult.Cancel;
+                this.DialogResult = DialogResult.Cancel;
                 MessageBox.Show("登录失败","错误",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
