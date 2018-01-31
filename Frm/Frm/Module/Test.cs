@@ -159,8 +159,10 @@ namespace Frm.Module
             }
         }
 
-        //同步采样数据处理异步方法
-       async void Start_MyTask()
+        /// <summary>
+        /// 同步采样数据处理异步方法
+        /// </summary>
+        async void Start_MyTask()
         {
             SplashScreenManager.ShowForm(typeof(WaitForm1));
             await Task.Run(() =>
@@ -258,6 +260,9 @@ namespace Frm.Module
         public static NET2991.NET2991_AI_STATUS Sts;
         public static UserDef.CFGPARA CfgPara2;
         public static NET2991.NET2991_AI_STATUS Sts1;
+        /// <summary>
+        /// 两张卡参数配置
+        /// </summary>
         protected void InitSettings()
         {
             CfgPara1.AIParam.szDevName = new sbyte[32];
@@ -357,7 +362,11 @@ namespace Frm.Module
             CfgPara2.hDevice = (IntPtr)(-1);
         }
 
-        //读取两张卡数据文件并显示
+        /// <summary>
+        /// 读取两张卡数据文件并显示在VGridControl中
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void barButtonItem5_ItemClick(object sender, ItemClickEventArgs e)
         {
             DataTable dt = new DataTable();
@@ -392,7 +401,11 @@ namespace Frm.Module
             this.vGridControl1.DataSource = dt;
         }
 
-        //单卡有限采集保存文件
+        /// <summary>
+        /// 单卡有限采集保存文件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void barButtonItem6_ItemClick(object sender, ItemClickEventArgs e)
         {
             InitOneCardSettings();
@@ -456,7 +469,9 @@ namespace Frm.Module
 
                 
         }
-        
+        /// <summary>
+        /// 单卡有限采集异步任务
+        /// </summary>
         async void Start_MyInfiniteNoSaveFile()
         {
             await Task.Run(() =>
@@ -511,6 +526,9 @@ namespace Frm.Module
 
             });
         }
+        /// <summary>
+        /// 单卡配置，以150为第一块卡
+        /// </summary>
         void InitOneCardSettings()
         {
             CfgPara1.AIParam.szDevName = new sbyte[32];
@@ -558,7 +576,11 @@ namespace Frm.Module
 
         }
 
-        //读取文件并显示
+        /// <summary>
+        ///读取文件显示在vGridControl中
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void barButtonItem7_ItemClick(object sender, ItemClickEventArgs e)
         {
             DataTable dt = new DataTable();
