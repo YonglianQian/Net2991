@@ -16,6 +16,8 @@ using System.Threading.Tasks;
 using DevExpress.XtraSplashScreen;
 using System.IO;
 using System.Configuration;
+using MathWorks.MATLAB.NET.Arrays;
+using MathWorks.MATLAB.NET.Utility;
 
 namespace Frm.Module
 {
@@ -618,7 +620,36 @@ namespace Frm.Module
 
         private void barButtonItem3_ItemClick(object sender, ItemClickEventArgs e)
         {
-            
+            SplashScreenManager.ShowForm(typeof(WaitForm1));
+
+            FileStream fs = new FileStream(@"C:\data2.dat", FileMode.Create, FileAccess.ReadWrite);
+            BinaryWriter bw = new BinaryWriter(fs);
+            Single[,] data = new float[32, 1024];
+            for (int i = 0; i <32 ; i++)
+            {
+                for (int j = 0; j < 1024; j++)
+                {
+                    data[i, j] = Convert.ToSingle(j+1);
+                    bw.Write(Convert.ToSingle(j+1));
+                }
+            }
+            bw.Close();
+            fs.Close();
+            Delta_amp.Class1 test = new Delta_amp.Class1();
+            MWNumericArray array = new MWNumericArray(data);
+            MWNumericArray deltaAmp, Max_DeltaAmp, Vpp;
+            MWArray[] result;
+            result = test.Delta_amp(3, 32, 1024, array);
+            deltaAmp = (MWNumericArray)result[0];
+            Max_DeltaAmp = (MWNumericArray)result[1];
+            Vpp = (MWNumericArray)result[2];
+            double[] deltaAmpArr = (double[])(deltaAmp.ToVector(MWArrayComponent.Real));
+            double Max_DeltaAmp1 = Max_DeltaAmp.ToScalarDouble();
+            double[] VppArr = (double[])(Vpp.ToVector(MWArrayComponent.Real));
+
+
+
+            SplashScreenManager.CloseForm();
         }
 
         private void barButtonItem8_ItemClick(object sender, ItemClickEventArgs e)

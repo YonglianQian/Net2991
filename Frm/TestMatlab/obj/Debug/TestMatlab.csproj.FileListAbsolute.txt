@@ -1,0 +1,12 @@
+E:\Net2991Demo\Frm\TestMatlab\bin\Debug\TestMatlab.exe.config
+E:\Net2991Demo\Frm\TestMatlab\bin\Debug\TestMatlab.exe
+E:\Net2991Demo\Frm\TestMatlab\bin\Debug\TestMatlab.pdb
+E:\Net2991Demo\Frm\TestMatlab\bin\Debug\Delta_amp.dll
+E:\Net2991Demo\Frm\TestMatlab\bin\Debug\matlab.dll
+E:\Net2991Demo\Frm\TestMatlab\bin\Debug\MWArray.dll
+E:\Net2991Demo\Frm\TestMatlab\obj\Debug\TestMatlab.csprojResolveAssemblyReference.cache
+E:\Net2991Demo\Frm\TestMatlab\obj\Debug\TestMatlab.Form1.resources
+E:\Net2991Demo\Frm\TestMatlab\obj\Debug\TestMatlab.Properties.Resources.resources
+E:\Net2991Demo\Frm\TestMatlab\obj\Debug\TestMatlab.csproj.GenerateResource.Cache
+E:\Net2991Demo\Frm\TestMatlab\obj\Debug\TestMatlab.exe
+E:\Net2991Demo\Frm\TestMatlab\obj\Debug\TestMatlab.pdb

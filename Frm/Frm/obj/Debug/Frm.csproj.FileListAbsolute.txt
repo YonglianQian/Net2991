@@ -158,11 +158,8 @@ C:\Users\Administrator\Desktop\Data\Net299120180111\Frm\Frm\obj\Debug\Frm.Splash
 C:\Users\Administrator\Desktop\Data\Net299120180111\Frm\Frm\obj\Debug\Frm.csproj.GenerateResource.Cache
 C:\Users\Administrator\Desktop\Data\Net299120180111\Frm\Frm\bin\Debug\Frm.exe
 C:\Users\Administrator\Desktop\Data\Net299120180111\Frm\Frm\bin\Debug\Frm.pdb
-E:\Net2991Demo\Frm\Frm\bin\Debug\Frm.exe
-E:\Net2991Demo\Frm\Frm\obj\Debug\Frm.csproj.ResolveComReference.cache
-E:\Net2991Demo\Frm\Frm\obj\Debug\Frm.exe
-E:\Net2991Demo\Frm\Frm\obj\Debug\Frm.pdb
 E:\Net2991Demo\Frm\Frm\bin\Debug\Frm.exe.config
+E:\Net2991Demo\Frm\Frm\bin\Debug\Frm.exe
 E:\Net2991Demo\Frm\Frm\bin\Debug\Frm.pdb
 E:\Net2991Demo\Frm\Frm\bin\Debug\DevExpress.Charts.v16.1.Core.dll
 E:\Net2991Demo\Frm\Frm\bin\Debug\DevExpress.Data.v16.1.dll
@@ -283,7 +280,7 @@ E:\Net2991Demo\Frm\Frm\bin\Debug\de\DevExpress.Office.v16.1.Core.resources.dll
 E:\Net2991Demo\Frm\Frm\bin\Debug\es\DevExpress.Office.v16.1.Core.resources.dll
 E:\Net2991Demo\Frm\Frm\bin\Debug\ja\DevExpress.Office.v16.1.Core.resources.dll
 E:\Net2991Demo\Frm\Frm\bin\Debug\ru\DevExpress.Office.v16.1.Core.resources.dll
-E:\Net2991Demo\Frm\Frm\obj\Debug\Frm.csprojResolveAssemblyReference.cache
+E:\Net2991Demo\Frm\Frm\obj\Debug\Frm.csproj.ResolveComReference.cache
 E:\Net2991Demo\Frm\Frm\obj\Debug\Frm.Form1.resources
 E:\Net2991Demo\Frm\Frm\obj\Debug\Frm.Login.resources
 E:\Net2991Demo\Frm\Frm\obj\Debug\Frm.MainFrm.resources
@@ -294,3 +291,9 @@ E:\Net2991Demo\Frm\Frm\obj\Debug\Frm.Module.WaitForm1.resources
 E:\Net2991Demo\Frm\Frm\obj\Debug\Frm.Properties.Resources.resources
 E:\Net2991Demo\Frm\Frm\obj\Debug\Frm.SplashScreen1.resources
 E:\Net2991Demo\Frm\Frm\obj\Debug\Frm.csproj.GenerateResource.Cache
+E:\Net2991Demo\Frm\Frm\obj\Debug\Frm.exe
+E:\Net2991Demo\Frm\Frm\obj\Debug\Frm.pdb
+E:\Net2991Demo\Frm\Frm\bin\Debug\Delta_amp.dll
+E:\Net2991Demo\Frm\Frm\bin\Debug\matlab.dll
+E:\Net2991Demo\Frm\Frm\bin\Debug\MWArray.dll
+E:\Net2991Demo\Frm\Frm\obj\Debug\Frm.csprojResolveAssemblyReference.cache
