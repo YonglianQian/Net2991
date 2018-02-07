@@ -191,14 +191,14 @@ namespace Frm.Module
             }
             CfgPara1.AIParam.fSampleRate = 1000000;
             CfgPara1.AIParam.nSampleMode = NET2991.NET2991_AI_SAMPMODE_FINITE;
-            CfgPara1.AIParam.nSampsPerChan = 102400;
+            CfgPara1.AIParam.nSampsPerChan = 1024000;
             CfgPara1.AIParam.nClockSource = NET2991.NET2991_AI_CLOCKSRC_LOCAL;
             CfgPara1.AIParam.nReserved0 = 0;
 
             CfgPara1.AIParam.nTriggerSource = NET2991.NET2991_AI_TRIGSRC_ANALOG;
             CfgPara1.AIParam.nTriggerDir = NET2991.NET2991_AI_TRIGDIR_RISING;
             CfgPara1.AIParam.fTriggerLevel = 0.2F; //触发电平
-            CfgPara1.AIParam.nDelaySamps = 0;
+            CfgPara1.AIParam.nDelaySamps = -24000;
             CfgPara1.AIParam.nReTriggerCount = 1;
 
             CfgPara1.AIParam.bMasterEn = 1;
@@ -206,7 +206,7 @@ namespace Frm.Module
             CfgPara1.AIParam.nReserved2 = 0;
 
             CfgPara1.nReadOffset = 0;
-            CfgPara1.nReadLength = 102400;
+            CfgPara1.nReadLength = 1024000;
             CfgPara1.hDevice = (IntPtr)(-1);
 
 
@@ -243,14 +243,14 @@ namespace Frm.Module
             }
             CfgPara2.AIParam.fSampleRate = 1000000;
             CfgPara2.AIParam.nSampleMode = NET2991.NET2991_AI_SAMPMODE_FINITE;
-            CfgPara2.AIParam.nSampsPerChan = 102400;
+            CfgPara2.AIParam.nSampsPerChan = 1024000;
             CfgPara2.AIParam.nClockSource = NET2991.NET2991_AI_CLOCKSRC_CLKIN_10M;
             CfgPara2.AIParam.nReserved0 = 0;
 
             CfgPara2.AIParam.nTriggerSource = NET2991.NET2991_AI_TRIGSRC_ANALOG;
             CfgPara2.AIParam.nTriggerDir = NET2991.NET2991_AI_TRIGDIR_RISING;
             CfgPara2.AIParam.fTriggerLevel = 0.2F; //触发电平
-            CfgPara2.AIParam.nDelaySamps = 0;
+            CfgPara2.AIParam.nDelaySamps = -24000;
             CfgPara2.AIParam.nReTriggerCount = 1;
 
             CfgPara2.AIParam.bMasterEn = 0;
@@ -258,19 +258,17 @@ namespace Frm.Module
             CfgPara2.AIParam.nReserved2 = 0;
 
             CfgPara2.nReadOffset = 0;
-            CfgPara2.nReadLength = 102400;
+            CfgPara2.nReadLength = 1024000;
             CfgPara2.hDevice = (IntPtr)(-1);
         }
         private string savename = "";
         void Start_MyTask()
         {
             
-            MWNumericArray array = new MWNumericArray(MWArrayComplexity.Real, 32, 102400);
             MWNumericArray deltaAmp, Max_DeltaAmp, Vpp,deltaxw,Max_Deltaxw;
             MWArray[] AmpResult,XwResult;
             double[] deltaAmpArr=new double[32], VppArr=new double[32],DeltaxwArr=new double[32];
             double Max_DeltaAmp1=0.0F,Max_Deltaxw1=0.0F;
-
 
             Task.Run(() =>
             {
@@ -288,7 +286,7 @@ namespace Frm.Module
                 UInt32 nChanSize = (uint)(CfgPara1.nReadLength * 2);//每通道数据读取长度
 
                 string name = Guid.NewGuid().ToString();
-                savename = "C:\\" + name + ".dat";
+                savename = @"C:\" + name + ".dat";
                 using (FileStream fs = new FileStream(savename, FileMode.Create, FileAccess.Write))
                 {
 
@@ -349,27 +347,11 @@ namespace Frm.Module
                 bw.Close();
                 }
 
-                #region 读取数据以供matlab调用
-                using (FileStream fstream = new FileStream(savename, FileMode.Open, FileAccess.Read))
-                {
+                #region 传递参数调用matlab的Dll
 
-                    BinaryReader br = new BinaryReader(fstream);
-
-
-                    for (int i = 1; i <= 32; i++)
-                    {
-                        for (int j = 1; j <= 102400; j++)
-                        {
-                            array[i, j] = br.ReadSingle();
-                        }
-                    }
-
-                    br.Close();
-                    fstream.Close();
-                }
-
-                Delta_amp.Class1 dc = new Delta_amp.Class1();
-                AmpResult = dc.Delta_amp(3, 32, 102400, array);
+                Delta.Class1 dc = new Delta.Class1();
+                string dir= "C:\\666.dat";
+                AmpResult = dc.Delta_amp(3, 32, 1024000, dir);
                 deltaAmp = (MWNumericArray)AmpResult[0];
                 Max_DeltaAmp = (MWNumericArray)AmpResult[1];
                 Vpp = (MWNumericArray)AmpResult[2];
@@ -377,7 +359,7 @@ namespace Frm.Module
                 Max_DeltaAmp1 = Max_DeltaAmp.ToScalarDouble();
                 VppArr = (double[])(Vpp.ToVector(MWArrayComponent.Real));
 
-                XwResult = dc.Delta_xw(2, 32, 102400, array, 4500, 1000000);
+                XwResult = dc.Delta_xw(2, 32, 1024000, dir, 4500, 1000000);
                 deltaxw = (MWNumericArray)XwResult[0];
                 Max_Deltaxw = (MWNumericArray)XwResult[1];
                 DeltaxwArr = (double[])(deltaxw.ToVector(MWArrayComponent.Real));
@@ -421,48 +403,7 @@ namespace Frm.Module
         /// <param name="e"></param>
         private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (string.IsNullOrEmpty(savename))
-            {
-                XtraMessageBox.Show("请先开始任务", "提示", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                return;
-            }
-            SplashScreenManager.ShowForm(typeof(WaitForm1));
-            FileStream fstream = new FileStream(savename, FileMode.Open, FileAccess.ReadWrite);
-            BinaryReader br = new BinaryReader(fstream);
-            MWNumericArray array = new MWNumericArray(MWArrayComplexity.Real, 32, 1024);
-
-            for (int i = 1; i <= 32; i++)
-            {
-                for (int j = 1; j <= 1024; j++)
-                {
-                    array[i, j] = br.ReadSingle();
-                }
-            }
-
-            fstream.Close();
-            br.Close();
-
-            Delta_amp.Class1 dc = new Delta_amp.Class1();
-            MWNumericArray deltaAmp, Max_DeltaAmp, Vpp;
-            MWArray[] Ampresult;
-            Ampresult = dc.Delta_amp(3, 32, 1024, array);
-            deltaAmp = (MWNumericArray)Ampresult[0];
-            Max_DeltaAmp = (MWNumericArray)Ampresult[1];
-            Vpp = (MWNumericArray)Ampresult[2];
-            double[] deltaAmpArr = (double[])(deltaAmp.ToVector(MWArrayComponent.Real));
-            double Max_deltaAmp1 = Max_DeltaAmp.ToScalarDouble();
-            double[] VppArr = (double[])(Vpp.ToVector(MWArrayComponent.Real));
-            //foreach (var item in deltaAmpArr)
-            //{
-            //    listBoxControl1.Items.Add(item);
-            //}
-            //listBoxControl2.Items.Add(Max_deltaAmp1);
-            //foreach (var item in VppArr)
-            //{
-            //    listBoxControl3.Items.Add(item);
-            //}
-
-            SplashScreenManager.CloseForm();
+            
         }
     }
 }

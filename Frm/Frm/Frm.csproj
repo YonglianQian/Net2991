@@ -38,11 +38,8 @@
     <ApplicationIcon>2017091403073192_easyicon_net_128.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="add">
-      <HintPath>C:\Users\Administrator\Desktop\Data\Matlab\add.dll</HintPath>
-    </Reference>
-    <Reference Include="Delta_amp">
-      <HintPath>C:\Users\Administrator\Desktop\Data\Matlab\Delta_amp\for_redistribution_files_only\Delta_amp.dll</HintPath>
+    <Reference Include="Delta">
+      <HintPath>C:\Users\Administrator\Desktop\Data\MyMatlab\Delta.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Charts.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -63,7 +60,7 @@
     </Reference>
     <Reference Include="MWArray, Version=2.15.1.0, Culture=neutral, PublicKeyToken=e1d84a0da19db86f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\Administrator\Desktop\Data\Matlab\MWArray.dll</HintPath>
+      <HintPath>C:\Users\Administrator\Desktop\Data\MyMatlab\MWArray.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
