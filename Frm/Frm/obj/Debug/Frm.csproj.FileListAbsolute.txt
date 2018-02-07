@@ -16,7 +16,6 @@ E:\Net2991Demo\Frm\Frm\bin\Debug\DevExpress.XtraGrid.v16.1.dll
 E:\Net2991Demo\Frm\Frm\bin\Debug\DevExpress.XtraLayout.v16.1.dll
 E:\Net2991Demo\Frm\Frm\bin\Debug\DevExpress.XtraPrinting.v16.1.dll
 E:\Net2991Demo\Frm\Frm\bin\Debug\DevExpress.XtraVerticalGrid.v16.1.dll
-E:\Net2991Demo\Frm\Frm\bin\Debug\matlab.dll
 E:\Net2991Demo\Frm\Frm\bin\Debug\MWArray.dll
 E:\Net2991Demo\Frm\Frm\bin\Debug\DevExpress.Pdf.v16.1.Core.dll
 E:\Net2991Demo\Frm\Frm\bin\Debug\DevExpress.Utils.v16.1.UI.dll
@@ -136,3 +135,5 @@ E:\Net2991Demo\Frm\Frm\obj\Debug\Frm.SplashScreen1.resources
 E:\Net2991Demo\Frm\Frm\obj\Debug\Frm.csproj.GenerateResource.Cache
 E:\Net2991Demo\Frm\Frm\obj\Debug\Frm.exe
 E:\Net2991Demo\Frm\Frm\obj\Debug\Frm.pdb
+E:\Net2991Demo\Frm\Frm\bin\Debug\add.dll
+E:\Net2991Demo\Frm\Frm\obj\Debug\Frm.csprojResolveAssemblyReference.cache

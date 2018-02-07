@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows.Forms;
 using DevExpress.LookAndFeel;
 using DevExpress.XtraEditors;
+using Frm.Common;
 
 namespace Frm
 {
@@ -16,7 +17,7 @@ namespace Frm
         [STAThread]
         static void Main()
         {
-            
+
             DevExpress.Skins.SkinManager.EnableFormSkins();
             DevExpress.Skins.SkinManager.EnableMdiFormSkins();
             Application.EnableVisualStyles();
@@ -44,7 +45,7 @@ namespace Frm
             }
             else
             {
-                
+                login.Dispose();
             }
             
         }

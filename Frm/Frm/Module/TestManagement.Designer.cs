@@ -49,11 +49,17 @@
             this.信号脉宽 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.信号VPP = new DevExpress.XtraGrid.Columns.GridColumn();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.listBoxControl3 = new DevExpress.XtraEditors.ListBoxControl();
+            this.listBoxControl2 = new DevExpress.XtraEditors.ListBoxControl();
+            this.listBoxControl1 = new DevExpress.XtraEditors.ListBoxControl();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.listBoxControl3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listBoxControl2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listBoxControl1)).BeginInit();
             this.SuspendLayout();
             // 
             // splashScreenManager1
@@ -95,11 +101,12 @@
             // 
             // barButtonItem2
             // 
-            this.barButtonItem2.Caption = "停止";
+            this.barButtonItem2.Caption = "加载数据";
             this.barButtonItem2.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.Glyph")));
             this.barButtonItem2.Id = 3;
             this.barButtonItem2.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.LargeGlyph")));
             this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
             // barButtonItem3
             // 
@@ -216,11 +223,38 @@
             this.splitContainerControl1.Panel1.Controls.Add(this.gridControl1);
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.splitContainerControl1.Panel2.Controls.Add(this.listBoxControl3);
+            this.splitContainerControl1.Panel2.Controls.Add(this.listBoxControl2);
+            this.splitContainerControl1.Panel2.Controls.Add(this.listBoxControl1);
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.Size = new System.Drawing.Size(928, 539);
             this.splitContainerControl1.SplitterPosition = 404;
             this.splitContainerControl1.TabIndex = 3;
             this.splitContainerControl1.Text = "splitContainerControl1";
+            // 
+            // listBoxControl3
+            // 
+            this.listBoxControl3.Cursor = System.Windows.Forms.Cursors.Default;
+            this.listBoxControl3.Location = new System.Drawing.Point(312, 13);
+            this.listBoxControl3.Name = "listBoxControl3";
+            this.listBoxControl3.Size = new System.Drawing.Size(120, 503);
+            this.listBoxControl3.TabIndex = 2;
+            // 
+            // listBoxControl2
+            // 
+            this.listBoxControl2.Cursor = System.Windows.Forms.Cursors.Default;
+            this.listBoxControl2.Location = new System.Drawing.Point(165, 13);
+            this.listBoxControl2.Name = "listBoxControl2";
+            this.listBoxControl2.Size = new System.Drawing.Size(120, 503);
+            this.listBoxControl2.TabIndex = 1;
+            // 
+            // listBoxControl1
+            // 
+            this.listBoxControl1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.listBoxControl1.Location = new System.Drawing.Point(7, 13);
+            this.listBoxControl1.Name = "listBoxControl1";
+            this.listBoxControl1.Size = new System.Drawing.Size(120, 503);
+            this.listBoxControl1.TabIndex = 0;
             // 
             // TestManagement
             // 
@@ -242,6 +276,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.listBoxControl3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listBoxControl2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listBoxControl1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -266,5 +303,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn 信号VPP;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraEditors.ListBoxControl listBoxControl3;
+        private DevExpress.XtraEditors.ListBoxControl listBoxControl2;
+        private DevExpress.XtraEditors.ListBoxControl listBoxControl1;
     }
 }
