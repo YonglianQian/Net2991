@@ -21,10 +21,27 @@ namespace TestMatlab
 
         private void button1_Click(object sender, EventArgs e)
         {
-            matlab.Class1 mc = new matlab.Class1();
-            MWArray[] y = mc.func(1, 3, 4);
-            MessageBox.Show(y[0].ToString());
-            
+            MWArray[] Result;
+            MWNumericArray deltaAmp, Max_DeltaAmp, Vpp;
+
+            Delta.Class1 dc = new Delta.Class1();
+            Result = dc.Delta_amp(3, 32, 1024000, "C:\\666.dat");
+            deltaAmp = (MWNumericArray)Result[0];
+            Max_DeltaAmp = (MWNumericArray)Result[1];
+            Vpp = (MWNumericArray)Result[2];
+            double[] DeltaAmpArr = (double[])(deltaAmp.ToVector(MWArrayComponent.Real));
+            double Max_DeltaAmp1 = Max_DeltaAmp.ToScalarDouble();
+            double[] VppArr = (double[])(Vpp.ToVector(MWArrayComponent.Real));
+
+            foreach (var item in DeltaAmpArr)
+            {
+                listBox1.Items.Add(item);
+            }
+            listBox2.Items.Add(Max_DeltaAmp1);
+            foreach (var item in VppArr)
+            {
+                listBox3.Items.Add(item);
+            }
         }
     }
 }
