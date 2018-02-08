@@ -41,11 +41,11 @@ namespace Frm
             Login login = new Login();
             if (login.ShowDialog()==DialogResult.OK)
             {
+                login.Dispose();
                 Application.Run(new MainFrm());
             }
             else
             {
-                login.Dispose();
             }
             
         }

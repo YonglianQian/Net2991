@@ -32,15 +32,13 @@ namespace Frm
         private void tileItem1_ItemClick(object sender, TileItemEventArgs e)
         {
             TestManagement test = new TestManagement();
-            if (test.ShowDialog()==DialogResult.OK)
-            {
-
-            }
-            else
+            if (test.ShowDialog() == DialogResult.Cancel)
             {
                 test.Dispose();
                 Utility.ClearMemory();
             }
+            
+            
             
         }
 

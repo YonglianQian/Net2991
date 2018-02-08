@@ -1,6 +1,7 @@
 E:\Net2991Demo\Frm\Frm\bin\Debug\Frm.exe.config
 E:\Net2991Demo\Frm\Frm\bin\Debug\Frm.exe
 E:\Net2991Demo\Frm\Frm\bin\Debug\Frm.pdb
+E:\Net2991Demo\Frm\Frm\bin\Debug\Delta.dll
 E:\Net2991Demo\Frm\Frm\bin\Debug\DevExpress.Charts.v16.1.Core.dll
 E:\Net2991Demo\Frm\Frm\bin\Debug\DevExpress.Data.v16.1.dll
 E:\Net2991Demo\Frm\Frm\bin\Debug\DevExpress.Printing.v16.1.Core.dll
@@ -134,5 +135,3 @@ E:\Net2991Demo\Frm\Frm\obj\Debug\Frm.SplashScreen1.resources
 E:\Net2991Demo\Frm\Frm\obj\Debug\Frm.csproj.GenerateResource.Cache
 E:\Net2991Demo\Frm\Frm\obj\Debug\Frm.exe
 E:\Net2991Demo\Frm\Frm\obj\Debug\Frm.pdb
-E:\Net2991Demo\Frm\Frm\obj\Debug\Frm.csprojResolveAssemblyReference.cache
-E:\Net2991Demo\Frm\Frm\bin\Debug\Delta.dll
