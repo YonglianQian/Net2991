@@ -135,3 +135,4 @@ E:\Net2991Demo\Frm\Frm\obj\Debug\Frm.SplashScreen1.resources
 E:\Net2991Demo\Frm\Frm\obj\Debug\Frm.csproj.GenerateResource.Cache
 E:\Net2991Demo\Frm\Frm\obj\Debug\Frm.exe
 E:\Net2991Demo\Frm\Frm\obj\Debug\Frm.pdb
+E:\Net2991Demo\Frm\Frm\obj\Debug\Frm.csprojResolveAssemblyReference.cache

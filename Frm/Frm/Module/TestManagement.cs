@@ -33,6 +33,7 @@ namespace Frm.Module
         public static NET2991.NET2991_AI_STATUS Sts;
         public static UserDef.CFGPARA CfgPara2;
         public static NET2991.NET2991_AI_STATUS Sts1;
+        public Matlab_Result result;
 
         /// <summary>
         /// 采集32路通道信号，调用matlab算法处理数据并保存为二进制文件
@@ -163,9 +164,7 @@ namespace Frm.Module
                 CfgPara2.hDevice = (IntPtr)(-1);
             }
         }
-
-        double[] deltaAmpArr = new double[32], VppArr = new double[32], DeltaxwArr = new double[32];
-        double Max_DeltaAmp1 = 0.0F, Max_Deltaxw1 = 0.0F;
+        public Task<Matlab_Result> t;
         /// <summary>
         /// 配置两块板卡参数
         /// </summary>
@@ -266,125 +265,120 @@ namespace Frm.Module
             CfgPara2.nReadLength = 102400;
             CfgPara2.hDevice = (IntPtr)(-1);
         }
-        async void Start_MyTask()
+        private void Start_MyTask()
         {
             SplashScreenManager.ShowForm(typeof(WaitForm1));
 
-            await Task.Run(() =>
-             {
+             Task.Run(() =>
+               {
 
-                 UInt16[] nAIArray1 = new ushort[2048];
-                 UInt16[] nAIArray2 = new ushort[2048];
-                 UInt32 dwReadChan1 = 0;
-                 UInt32 dwReadChan2 = 0;
-                 UInt32 dwReadSampsPerChan = 0;
-                 UInt32 dwSampsPerChanRead = 0;
-                 UInt32 dwAvailSampsPerChan = 0;
-                 UInt32 dwTotalDataSize = 0;
-                 double fTimeOut = -1.0;
-                 UInt32 nChanSize = (uint)(CfgPara1.nReadLength * 2);//每通道数据读取长度
+                   UInt16[] nAIArray1 = new ushort[2048];
+                   UInt16[] nAIArray2 = new ushort[2048];
+                   UInt32 dwReadChan1 = 0;
+                   UInt32 dwReadChan2 = 0;
+                   UInt32 dwReadSampsPerChan = 0;
+                   UInt32 dwSampsPerChanRead = 0;
+                   UInt32 dwAvailSampsPerChan = 0;
+                   UInt32 dwTotalDataSize = 0;
+                   double fTimeOut = -1.0;
+                   UInt32 nChanSize = (uint)(CfgPara1.nReadLength * 2);//每通道数据读取长度
 
-                 string name = Guid.NewGuid().ToString();
-                 string savename = @"C:\" + name + ".dat";
-                 FileStream fs = new FileStream(savename, FileMode.Create, FileAccess.Write);
-                 BinaryWriter bw = new BinaryWriter(fs);
-                 while (true)
-                 {
-                     dwReadSampsPerChan = 0;
-                     if (NET2991.NET2991_AI_ReadBinary(CfgPara1.hDevice, ref dwReadChan1, nAIArray1, dwReadSampsPerChan, ref dwSampsPerChanRead, ref dwAvailSampsPerChan, fTimeOut) == 0)
-                     {
-                         continue;
-                     }
+                   string name = Guid.NewGuid().ToString();
+                   string savename = @"C:\" + name + ".dat";
+                   FileStream fs = new FileStream(savename, FileMode.Create, FileAccess.Write);
+                   BinaryWriter bw = new BinaryWriter(fs);
+                   while (true)
+                   {
+                       dwReadSampsPerChan = 0;
+                       if (NET2991.NET2991_AI_ReadBinary(CfgPara1.hDevice, ref dwReadChan1, nAIArray1, dwReadSampsPerChan, ref dwSampsPerChanRead, ref dwAvailSampsPerChan, fTimeOut) == 0)
+                       {
+                           continue;
+                       }
 
-                     dwTotalDataSize += (dwSampsPerChanRead * 2);
-                     for (int j = 0; j < dwSampsPerChanRead; j++)
-                     {
-                         bw.Write(Convert.ToSingle((nAIArray1[j] & 0xFFFF) * (20000.00 / 65536) - 10000.00));
-                     }
-                     if (dwTotalDataSize >= CfgPara1.dwRealReadLen)
-                     {
-                         NET2991.NET2991_AI_SetReadComplete(CfgPara1.hDevice);
-                         break;
-                     }
-                 }
-                 dwTotalDataSize = 0;
-                 while (true)
-                 {
-                     dwReadSampsPerChan = 0;
-                     if (NET2991.NET2991_AI_ReadBinary(CfgPara2.hDevice, ref dwReadChan2, nAIArray2, dwReadSampsPerChan, ref dwSampsPerChanRead, ref dwAvailSampsPerChan, fTimeOut) == 0)
-                     {
-                         continue;
-                     }
-                     dwTotalDataSize += (dwSampsPerChanRead * 2);
+                       dwTotalDataSize += (dwSampsPerChanRead * 2);
+                       for (int j = 0; j < dwSampsPerChanRead; j++)
+                       {
+                           bw.Write(Convert.ToSingle((nAIArray1[j] & 0xFFFF) * (20000.00 / 65536) - 10000.00));
+                       }
+                       if (dwTotalDataSize >= CfgPara1.dwRealReadLen)
+                       {
+                           NET2991.NET2991_AI_SetReadComplete(CfgPara1.hDevice);
+                           break;
+                       }
+                   }
+                   dwTotalDataSize = 0;
+                   while (true)
+                   {
+                       dwReadSampsPerChan = 0;
+                       if (NET2991.NET2991_AI_ReadBinary(CfgPara2.hDevice, ref dwReadChan2, nAIArray2, dwReadSampsPerChan, ref dwSampsPerChanRead, ref dwAvailSampsPerChan, fTimeOut) == 0)
+                       {
+                           continue;
+                       }
+                       dwTotalDataSize += (dwSampsPerChanRead * 2);
 
-                     for (int i = 0; i < dwSampsPerChanRead; i++)
-                     {
-                         bw.Write(Convert.ToSingle((nAIArray2[i] & 0xFFFF) * (20000.00 / 65536) - 10000.00));
-                     }
+                       for (int i = 0; i < dwSampsPerChanRead; i++)
+                       {
+                           bw.Write(Convert.ToSingle((nAIArray2[i] & 0xFFFF) * (20000.00 / 65536) - 10000.00));
+                       }
 
-                     if (dwTotalDataSize >= CfgPara2.dwRealReadLen)
-                     {
-                         NET2991.NET2991_AI_SetReadComplete(CfgPara2.hDevice);
-                         if (CfgPara2.hDevice != (IntPtr)(-1) || CfgPara1.hDevice != (IntPtr)(-1))
-                         {
-                             NET2991.NET2991_AI_StopTask(CfgPara2.hDevice);
-                             NET2991.NET2991_DEV_Release(CfgPara2.hDevice);
-                             CfgPara2.hDevice = (IntPtr)(-1);
-                             NET2991.NET2991_AI_StopTask(CfgPara1.hDevice);
-                             NET2991.NET2991_DEV_Release(CfgPara1.hDevice);
-                             CfgPara1.hDevice = (IntPtr)(-1);
-                         }
-                         break;
-                     }
+                       if (dwTotalDataSize >= CfgPara2.dwRealReadLen)
+                       {
+                           NET2991.NET2991_AI_SetReadComplete(CfgPara2.hDevice);
+                           if (CfgPara2.hDevice != (IntPtr)(-1) || CfgPara1.hDevice != (IntPtr)(-1))
+                           {
+                               NET2991.NET2991_AI_StopTask(CfgPara2.hDevice);
+                               NET2991.NET2991_DEV_Release(CfgPara2.hDevice);
+                               CfgPara2.hDevice = (IntPtr)(-1);
+                               NET2991.NET2991_AI_StopTask(CfgPara1.hDevice);
+                               NET2991.NET2991_DEV_Release(CfgPara1.hDevice);
+                               CfgPara1.hDevice = (IntPtr)(-1);
+                           }
+                           break;
+                       }
 
 
-                 }
-                 fs.Close();
-                 bw.Close();
+                   }
+                   fs.Close();
+                   bw.Close();
 
-                 #region 传递参数调用matlab的Dll
+                   #region 传递参数调用matlab的Dll
 
-                 MWNumericArray deltaAmp, Max_DeltaAmp, Vpp, deltaxw, Max_Deltaxw;
-                 MWArray[] AmpResult, XwResult;
-                 Delta.Class1 dc = new Delta.Class1();
-                 AmpResult = dc.Delta_amp(3, 32, 102400, savename);
-                 deltaAmp = (MWNumericArray)AmpResult[0];
-                 Max_DeltaAmp = (MWNumericArray)AmpResult[1];
-                 Vpp = (MWNumericArray)AmpResult[2];
-                 deltaAmpArr = (double[])(deltaAmp.ToVector(MWArrayComponent.Real));
-                 Max_DeltaAmp1 = Max_DeltaAmp.ToScalarDouble();
-                 VppArr = (double[])(Vpp.ToVector(MWArrayComponent.Real));
+                   MWNumericArray deltaAmp, Max_DeltaAmp, Vpp, deltaxw, Max_Deltaxw;
+                   MWArray[] AmpResult, XwResult;
+                   Delta.Class1 dc = new Delta.Class1();
+                   AmpResult = dc.Delta_amp(3, 32, 102400, savename);
+                   deltaAmp = (MWNumericArray)AmpResult[0];
+                   Max_DeltaAmp = (MWNumericArray)AmpResult[1];
+                   Vpp = (MWNumericArray)AmpResult[2];
+                   result.deltaAmpArr = (double[])(deltaAmp.ToVector(MWArrayComponent.Real));
+                   result.Max_DeltaAmp1 = Max_DeltaAmp.ToScalarDouble();
+                   result.VppArr = (double[])(Vpp.ToVector(MWArrayComponent.Real));
 
-                 XwResult = dc.Delta_xw(2, 32, 102400, savename, 4500, 1000000);
-                 deltaxw = (MWNumericArray)XwResult[0];
-                 Max_Deltaxw = (MWNumericArray)XwResult[1];
-                 DeltaxwArr = (double[])(deltaxw.ToVector(MWArrayComponent.Real));
-                 Max_Deltaxw1 = Max_Deltaxw.ToScalarDouble();
-                 #endregion
+                   XwResult = dc.Delta_xw(2, 32, 102400, savename, 4500, 1000000);
+                   deltaxw = (MWNumericArray)XwResult[0];
+                   Max_Deltaxw = (MWNumericArray)XwResult[1];
+                   result.DeltaxwArr = (double[])(deltaxw.ToVector(MWArrayComponent.Real));
+                   result.Max_Deltaxw1 = Max_Deltaxw.ToScalarDouble();
+                   #endregion
 
-                 if (CfgPara1.hDevice != (IntPtr)(-1) || CfgPara2.hDevice != (IntPtr)(-1))
-                 {
-                     NET2991.NET2991_AI_StopTask(CfgPara1.hDevice);
-                     NET2991.NET2991_DEV_Release(CfgPara1.hDevice);
-                     CfgPara1.hDevice = (IntPtr)(-1);
-                     NET2991.NET2991_AI_StopTask(CfgPara2.hDevice);
-                     NET2991.NET2991_DEV_Release(CfgPara2.hDevice);
-                     CfgPara2.hDevice = (IntPtr)(-1);
-                 }
+                   if (CfgPara1.hDevice != (IntPtr)(-1) || CfgPara2.hDevice != (IntPtr)(-1))
+                   {
+                       NET2991.NET2991_AI_StopTask(CfgPara1.hDevice);
+                       NET2991.NET2991_DEV_Release(CfgPara1.hDevice);
+                       CfgPara1.hDevice = (IntPtr)(-1);
+                       NET2991.NET2991_AI_StopTask(CfgPara2.hDevice);
+                       NET2991.NET2991_DEV_Release(CfgPara2.hDevice);
+                       CfgPara2.hDevice = (IntPtr)(-1);
+                   }
+               }).GetAwaiter().OnCompleted(() =>
+               {
+                   foreach (var item in result.deltaAmpArr)
+                   {
+                       listBoxControl1.Items.Add(item);
+                   }
+               });
 
-             });
-
-            foreach (var item in deltaAmpArr)
-            {
-                listBoxControl1.Items.Add(item);
-            }
-            listBoxControl2.Items.Add(Max_DeltaAmp1);
-            foreach (var item in VppArr)
-            {
-                listBoxControl3.Items.Add(item);
-            }
             SplashScreenManager.CloseForm();
-
 
         }
         /// <summary>

@@ -7,6 +7,12 @@ using System.Windows.Forms;
 
 namespace Frm.Common
 {
+    public struct Matlab_Result
+    {
+        public double[] deltaAmpArr, VppArr, DeltaxwArr;
+        public double Max_DeltaAmp1, Max_Deltaxw1;
+
+    }
     public class Utility
     {
         public static bool DataGridViewShowToExcel(DataGridView dgv,bool isShowExcel)
