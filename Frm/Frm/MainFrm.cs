@@ -22,21 +22,24 @@ namespace Frm
         private void tileItem5_ItemClick(object sender, TileItemEventArgs e)
         {
             FrmSettings settings = new FrmSettings();
-            if (settings.ShowDialog()==DialogResult.Cancel)
-            {
-                settings.Dispose();
-                Utility.ClearMemory();
-            }
+            //if (settings.ShowDialog()==DialogResult.Cancel)
+            //{
+            //    settings.Dispose();
+            //    Utility.ClearMemory();
+            //}
+            settings.Show();
         }
 
         private void tileItem1_ItemClick(object sender, TileItemEventArgs e)
         {
             TestManagement test = new TestManagement();
-            if (test.ShowDialog() == DialogResult.Cancel)
-            {
-                test.Dispose();
-                Utility.ClearMemory();
-            }
+            //if (test.ShowDialog() == DialogResult.Cancel)
+            //{
+            //    test.Dispose();
+            //    Utility.ClearMemory();
+            //}
+
+            test.Show();
             
             
             

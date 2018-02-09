@@ -271,6 +271,7 @@
             this.ShowInTaskbar = false;
             this.StatusBar = this.ribbonStatusBar;
             this.Text = "测试";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TestManagement_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();

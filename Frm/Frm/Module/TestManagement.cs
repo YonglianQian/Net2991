@@ -172,7 +172,7 @@ namespace Frm.Module
         {
             CfgPara1.AIParam.szDevName = new sbyte[32];
             CfgPara1.AIParam.CHParam = new NET2991.NET2991_CH_PARAM[17];
-            NET2991.NET2991_DEV_Init(2048);
+            NET2991.NET2991_DEV_Init(4096);
             for (int i = 0; i < 32; i++)
             {
                 CfgPara1.AIParam.szDevName[i] = 0;
@@ -195,7 +195,7 @@ namespace Frm.Module
             }
             CfgPara1.AIParam.fSampleRate = 1000000;
             CfgPara1.AIParam.nSampleMode = NET2991.NET2991_AI_SAMPMODE_FINITE;
-            CfgPara1.AIParam.nSampsPerChan = 102400;
+            CfgPara1.AIParam.nSampsPerChan = 1024;
             CfgPara1.AIParam.nClockSource = NET2991.NET2991_AI_CLOCKSRC_LOCAL;
             CfgPara1.AIParam.nReserved0 = 0;
 
@@ -210,7 +210,7 @@ namespace Frm.Module
             CfgPara1.AIParam.nReserved2 = 0;
 
             CfgPara1.nReadOffset = 0;
-            CfgPara1.nReadLength = 102400;
+            CfgPara1.nReadLength = 1024;
             CfgPara1.hDevice = (IntPtr)(-1);
 
 
@@ -247,7 +247,7 @@ namespace Frm.Module
             }
             CfgPara2.AIParam.fSampleRate = 1000000;
             CfgPara2.AIParam.nSampleMode = NET2991.NET2991_AI_SAMPMODE_FINITE;
-            CfgPara2.AIParam.nSampsPerChan = 102400;
+            CfgPara2.AIParam.nSampsPerChan = 1024;
             CfgPara2.AIParam.nClockSource = NET2991.NET2991_AI_CLOCKSRC_CLKIN_10M;
             CfgPara2.AIParam.nReserved0 = 0;
 
@@ -262,14 +262,14 @@ namespace Frm.Module
             CfgPara2.AIParam.nReserved2 = 0;
 
             CfgPara2.nReadOffset = 0;
-            CfgPara2.nReadLength = 102400;
+            CfgPara2.nReadLength = 1024;
             CfgPara2.hDevice = (IntPtr)(-1);
         }
-        private void Start_MyTask()
+         async void Start_MyTask()
         {
             SplashScreenManager.ShowForm(typeof(WaitForm1));
 
-             Task.Run(() =>
+            await Task.Run(() =>
                {
 
                    UInt16[] nAIArray1 = new ushort[2048];
@@ -346,7 +346,7 @@ namespace Frm.Module
                    MWNumericArray deltaAmp, Max_DeltaAmp, Vpp, deltaxw, Max_Deltaxw;
                    MWArray[] AmpResult, XwResult;
                    Delta.Class1 dc = new Delta.Class1();
-                   AmpResult = dc.Delta_amp(3, 32, 102400, savename);
+                   AmpResult = dc.Delta_amp(3, 32, 1024, savename);
                    deltaAmp = (MWNumericArray)AmpResult[0];
                    Max_DeltaAmp = (MWNumericArray)AmpResult[1];
                    Vpp = (MWNumericArray)AmpResult[2];
@@ -354,7 +354,7 @@ namespace Frm.Module
                    result.Max_DeltaAmp1 = Max_DeltaAmp.ToScalarDouble();
                    result.VppArr = (double[])(Vpp.ToVector(MWArrayComponent.Real));
 
-                   XwResult = dc.Delta_xw(2, 32, 102400, savename, 4500, 1000000);
+                   XwResult = dc.Delta_xw(2, 32, 1024, savename, 4500, 1000000);
                    deltaxw = (MWNumericArray)XwResult[0];
                    Max_Deltaxw = (MWNumericArray)XwResult[1];
                    result.DeltaxwArr = (double[])(deltaxw.ToVector(MWArrayComponent.Real));
@@ -370,13 +370,11 @@ namespace Frm.Module
                        NET2991.NET2991_DEV_Release(CfgPara2.hDevice);
                        CfgPara2.hDevice = (IntPtr)(-1);
                    }
-               }).GetAwaiter().OnCompleted(() =>
-               {
-                   foreach (var item in result.deltaAmpArr)
-                   {
-                       listBoxControl1.Items.Add(item);
-                   }
                });
+            foreach (var item in result.deltaAmpArr)
+            {
+                listBoxControl1.Items.Add(item);
+            }
 
             SplashScreenManager.CloseForm();
 
@@ -389,6 +387,11 @@ namespace Frm.Module
         private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
         {
             
+        }
+
+        private void TestManagement_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            XtraMessageBox.Show("确定要退出?", "tishi", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
         }
     }
 }
