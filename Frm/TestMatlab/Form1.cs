@@ -25,7 +25,7 @@ namespace TestMatlab
             MWNumericArray deltaAmp, Max_DeltaAmp, Vpp;
 
             Delta.Class1 dc = new Delta.Class1();
-            Result = dc.Delta_amp(3, 32, 1024000, "C:\\666.dat");
+            Result = dc.Delta_amp(3, 32, 1024000, "C:\\201802073.dat");
             deltaAmp = (MWNumericArray)Result[0];
             Max_DeltaAmp = (MWNumericArray)Result[1];
             Vpp = (MWNumericArray)Result[2];
