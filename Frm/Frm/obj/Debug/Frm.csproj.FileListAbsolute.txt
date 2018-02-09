@@ -294,4 +294,5 @@ E:\Net2991Demo\Frm\Frm\obj\Debug\Frm.csproj.GenerateResource.Cache
 E:\Net2991Demo\Frm\Frm\obj\Debug\Frm.exe
 E:\Net2991Demo\Frm\Frm\obj\Debug\Frm.pdb
 E:\Net2991Demo\Frm\Frm\bin\Debug\MWArray.dll
-E:\Net2991Demo\Frm\Frm\obj\Debug\Frm.csprojResolveAssemblyReference.cache
+E:\Net2991Demo\Frm\Frm\bin\Debug\add.dll
+E:\Net2991Demo\Frm\Frm\bin\Debug\Delta_amp.dll

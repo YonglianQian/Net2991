@@ -21,7 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -37,8 +37,17 @@
     <ApplicationIcon>2017091403073192_easyicon_net_128.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Reference Include="Delta">
       <HintPath>C:\Users\Administrator\Desktop\Data\MyMatlab\Delta.dll</HintPath>
+=======
+    <Reference Include="add">
+      <HintPath>C:\Users\Administrator\Desktop\Data\Matlab\add\for_redistribution_files_only\add.dll</HintPath>
+    </Reference>
+    <Reference Include="Delta_amp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\Administrator\Desktop\Data\Matlab\Delta_amp\for_redistribution_files_only\Delta_amp.dll</HintPath>
+>>>>>>> 1a777967d1823c4cd0baa0878070cd3c2951efc2
     </Reference>
     <Reference Include="DevExpress.Charts.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
